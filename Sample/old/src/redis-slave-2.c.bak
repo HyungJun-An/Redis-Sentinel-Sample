@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <hiredis.h>
+int main(int argc, char *argv[])
+{
+	redisContext *conn=NULL;
+	redisReply *resp =NULL;
+	int loop= 0;
+	conn = redisConnect("172.18.0.3",6379);
+	if ( (NULL!=conn)&& conn->err)
+	{
+		printf("error :%s\n",conn->errstr);
+		redisFree(conn);
+		return 0;
+	}
+
+	else if (NULL ==conn)
+	{
+		return 0;
+	}
+
+	for (loop = 1; loop<4; loop++)
+	{
+		resp = (redisReply *)redisCommand(conn,"GET name", loop);
+		if (NULL ==resp)
+		{
+			redisFree(conn);
+			return 0;
+		}
+
+		if (REDIS_REPLY_ERROR == resp->type)
+		{
+			redisFree(conn);
+			freeReplyObject(resp);
+			return 0;
+		}
+		printf("%d : %s\n",loop,resp->str);
+		freeReplyObject(resp);
+	}
+
+	redisFree(conn);
+	return 0;
+}

@@ -1,0 +1,1 @@
+/usr/bin/cc      CMakeFiles/example-push.dir/example-push.o  -o example-push -rdynamic -lhiredis 

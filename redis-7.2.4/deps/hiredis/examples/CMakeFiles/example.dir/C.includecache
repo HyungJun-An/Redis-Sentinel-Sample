@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/anhj/redis-7.2.4/deps/hiredis/examples/example.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+hiredis.h
+-
+winsock2.h
+-
+

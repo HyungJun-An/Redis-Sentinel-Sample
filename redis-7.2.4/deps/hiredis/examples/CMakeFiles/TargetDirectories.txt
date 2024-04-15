@@ -1,0 +1,2 @@
+/home/anhj/redis-7.2.4/deps/hiredis/examples/CMakeFiles/example.dir
+/home/anhj/redis-7.2.4/deps/hiredis/examples/CMakeFiles/example-push.dir
